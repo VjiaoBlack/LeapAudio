@@ -13,25 +13,32 @@
   </body>
 
   <script type="text/javascript">
-  window.scale = {};
-  window.scale["C4"] = 261.63;
-  window.scale["D4"] = 293.66;
-  window.scale["E4"] = 329.63;
-  window.scale["F4"] = 349.23;
-  window.scale["G4"] = 392.00;
-  window.scale["A3"] = 220.00;
-  window.scale["B3"] = 246.94;
-  // window.scale["C4"] = 261.63;
+  window.note = {};
+  window.note["C3"] = T("sin", {freq:130.81, mul:1});
+  window.note["D3"] = T("sin", {freq:146.83, mul:.95});
+  window.note["E3"] = T("sin", {freq:164.81, mul:.9});
+  window.note["F3"] = T("sin", {freq:174.61, mul:.85});
+  window.note["G3"] = T("sin", {freq:196.00, mul:.8});
+  window.note["A3"] = T("sin", {freq:220.00, mul:.75});
+  window.note["B3"] = T("sin", {freq:246.94, mul:.75});
+  window.note["C4"] = T("sin", {freq:261.63, mul:.25});
+  window.note["D4"] = T("sin", {freq:293.66, mul:.25});
+  window.note["E4"] = T("sin", {freq:329.63, mul:.25});
+  window.note["F4"] = T("sin", {freq:349.23, mul:.25});
+  window.note["G4"] = T("sin", {freq:392.00, mul:.25});
+  window.note["A4"] = T("sin", {freq:440.00, mul:.25});
+  window.note["B4"] = T("sin", {freq:493.88, mul:.25});
+  window.note["C5"] = T("sin", {freq:523.25, mul:.25});
 
-  window.converter = {};
-  window.converter[1] = "C4";
-  window.converter[2] = "D4";
-  window.converter[3] = "E4";
-  window.converter[4] = "F4";
-  window.converter[5] = "G4";
-  // window.converter[] = "A3";
-  // window.converter[] = "B3";
-  // window.converter[] = "C4";
+  window.chords = {};
+  window.chords[1] = T("+", note["C3"], note["E4"], note["G4"]).set({mul: 1});
+  window.chords[2] = T("+", note["D3"], note["F4"], note["A4"]).set({mul: 1});
+  window.chords[3] = T("+", note["E3"], note["G4"], note["B4"]).set({mul: 1});
+  window.chords[4] = T("+", note["F3"], note["A4"], note["C5"]).set({mul: 1});
+  window.chords[5] = T("+", note["G3"], note["B4"], note["D4"]).set({mul: 1});
+  window.chords[6] = T("+", note["A3"], note["C4"], note["E4"]).set({mul: 1});
+  window.chords[7] = T("+", note["B3"], note["D4"], note["F4"]).set({mul: 1});
+  window.chords[8] = T("+", note["G3"], note["B4"], note["D4"]).set({mul: 1});
 
   window.rnumf = document.getElementById("right");
   window.currnumf = 0;
@@ -40,7 +47,33 @@
 
 window.asdf = null;
 
-window.sin = T("sin", {freq:440, mul:0.5});
+window.chord = window.chords[1];
+
+  function numFingers(fingers) {
+    if (fingers[0].extended) {
+      if (fingers[4].extended) {
+        return 5;
+      } else if (fingers[2].extended) {
+        return 8;
+      } else if (fingers[1].extended) {
+        return 7;
+      } else {
+        return 6;
+      }
+    } else if (fingers[1].extended) {
+      if (fingers[4].extended) {
+        return 4;
+      } else if (fingers[3].extended) {
+        return 3;
+      } else if (fingers[2].extended) {
+        return 2;
+      } else {
+        return 1;
+      }
+    } else {
+      return 0;
+    }
+  }
 
 
     function testFingers() {
@@ -48,28 +81,28 @@ window.sin = T("sin", {freq:440, mul:0.5});
             window.oldrnumf = window.currnumf;
             var  i = 0;
             var fingers = window.Hand.fingers;
-            var numfingers = 0;
+            var numfingers = numFingers(fingers);
 
 
-            for (i = 0; i < 5; i++) {
-                if (fingers[i].extended) {
-                    numfingers++;
-                }
-            }
-            window.currnumf = numfingers;
+
+
+
+        } else {
+          numfingers = 0;
+        }
+        window.currnumf = numfingers;
             console.log(numfingers);
             window.rnumf.innerHTML = numfingers;
+        if (numfingers > 0 && window.currnumf != window.oldrnumf) {
+              window.chord.pause();
 
-            if (numfingers > 0 && window.currnumf != window.oldrnumf) {
-              window.sin.pause();
-
-              window.sin = T("sin", {freq: window.scale[window.converter[numfingers]] , mul:0.5});
+              window.chord = window.chords[numfingers];
 
 
-              window.sin.play();
+              window.chord.play();
+            } else  if (numfingers == 0) {
+              window.chord.pause();
             }
-
-        }
 
     }
 
@@ -82,7 +115,7 @@ window.sin = T("sin", {freq:440, mul:0.5});
 
             window.Hand = hand;
             if (asdf == null) {
-                asdf = setInterval(testFingers, 750);
+                asdf = setInterval(testFingers, 50);
             }
           }
       });
