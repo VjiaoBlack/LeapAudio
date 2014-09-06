@@ -13,20 +13,24 @@
   </body>
 
   <script type="text/javascript">
+
+  window.handy = 0;
+  window.volume = 0;
+
   window.note = {};
-  window.note["C3"] = T("sin", {freq:130.81, mul:1});
-  window.note["D3"] = T("sin", {freq:146.83, mul:.95});
-  window.note["E3"] = T("sin", {freq:164.81, mul:.9});
-  window.note["F3"] = T("sin", {freq:174.61, mul:.85});
-  window.note["G3"] = T("sin", {freq:196.00, mul:.8});
-  window.note["A3"] = T("sin", {freq:220.00, mul:.75});
-  window.note["B3"] = T("sin", {freq:246.94, mul:.75});
-  window.note["C4"] = T("sin", {freq:261.63, mul:.25});
-  window.note["D4"] = T("sin", {freq:293.66, mul:.25});
-  window.note["E4"] = T("sin", {freq:329.63, mul:.25});
-  window.note["F4"] = T("sin", {freq:349.23, mul:.25});
-  window.note["G4"] = T("sin", {freq:392.00, mul:.25});
-  window.note["A4"] = T("sin", {freq:440.00, mul:.25});
+  window.note["C3"] = T("sin", {freq:130.81, mul:.6});
+  window.note["D3"] = T("sin", {freq:146.83, mul:.6});
+  window.note["E3"] = T("sin", {freq:164.81, mul:.6});
+  window.note["F3"] = T("sin", {freq:174.61, mul:.6});
+  window.note["G3"] = T("sin", {freq:196.00, mul:.6});
+  window.note["A3"] = T("sin", {freq:220.00, mul:.6});
+  window.note["B3"] = T("sin", {freq:246.94, mul:.6});
+  window.note["C4"] = T("sin", {freq:261.63, mul:.55});
+  window.note["D4"] = T("sin", {freq:293.66, mul:.55});
+  window.note["E4"] = T("sin", {freq:329.63, mul:.3});
+  window.note["F4"] = T("sin", {freq:349.23, mul:.3});
+  window.note["G4"] = T("sin", {freq:392.00, mul:.3});
+  window.note["A4"] = T("sin", {freq:440.00, mul:.3});
   window.note["B4"] = T("sin", {freq:493.88, mul:.25});
   window.note["C5"] = T("sin", {freq:523.25, mul:.25});
 
@@ -38,7 +42,7 @@
   window.chords[5] = T("+", note["G3"], note["B4"], note["D4"]).set({mul: 1});
   window.chords[6] = T("+", note["A3"], note["C4"], note["E4"]).set({mul: 1});
   window.chords[7] = T("+", note["B3"], note["D4"], note["F4"]).set({mul: 1});
-  window.chords[8] = T("+", note["G3"], note["B4"], note["D4"]).set({mul: 1});
+  window.chords[8] = T("+", note["C4"], note["E4"], note["G4"]).set({mul: 1});
 
   window.rnumf = document.getElementById("right");
   window.currnumf = 0;
@@ -78,27 +82,30 @@ window.chord = window.chords[1];
 
     function testFingers() {
         if (window.Hand) {
+
+          window.handy = window.Hand.palmPosition[1];
+          window.volume = (800 - window.handy) / 400 - .5;
+
+          console.log(window.volume);
+
             window.oldrnumf = window.currnumf;
             var  i = 0;
             var fingers = window.Hand.fingers;
             var numfingers = numFingers(fingers);
-
-
-
-
-
         } else {
           numfingers = 0;
         }
         window.currnumf = numfingers;
             console.log(numfingers);
             window.rnumf.innerHTML = numfingers;
-        if (numfingers > 0 && window.currnumf != window.oldrnumf) {
+        if (numfingers > 0) {
+            if (window.currnumf != window.oldrnumf) {
               window.chord.pause();
+            }
 
-              window.chord = window.chords[numfingers];
+              window.chord = window.chords[numfingers].set({mul: window.volume});
 
-
+            if (window.currnumf != window.oldrnumf)
               window.chord.play();
             } else  if (numfingers == 0) {
               window.chord.pause();
