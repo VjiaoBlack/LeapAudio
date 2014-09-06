@@ -1,0 +1,237 @@
+x<!DOCTYPE html>
+<!-- saved from url=(0148)https://editor-leapmotion.netdna-ssl.com/leapmotion-examples/javascript/33bb9af093dab3c51c37279e7f68374b5bc87e57/v2/grab-strength/index.html.livegit -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8">
+<title>LiveGit</title>
+<meta name="viewport" content="width=device-width">
+
+
+    <meta name="description" content="LiveGit loads raw files directly from GitHub into a Live HTML Editor.">
+
+
+<link rel="stylesheet" href="https://editor-leapmotion.netdna-ssl.com/js/codemirror/codemirror.css">
+<script src="./LiveGit_files/jquery-2.1.0.min.js"></script>
+<script src="./LiveGit_files/fnk5lcd.js" type="text/javascript"></script>
+<script src="./LiveGit_files/codemirror.js"></script>
+<script src="./LiveGit_files/xml.js"></script>
+<script src="./LiveGit_files/javascript.js"></script>
+<script src="./LiveGit_files/css.js"></script>
+<script src="./LiveGit_files/htmlmixed.js"></script>
+<script src="./LiveGit_files/rawinflate.js"></script>
+<script src="./LiveGit_files/rawdeflate.js"></script>
+<script src="./LiveGit_files/esprima.js"></script>
+<script src="./LiveGit_files/html2canvas.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Droid+Sans+Mono:400">
+<link rel="stylesheet" href="https://yui-s.yahooapis.com/pure/0.4.2/pure-min.css">
+<link rel="stylesheet" href="https://editor-leapmotion.netdna-ssl.com/css/rawgit.css">
+<link rel="stylesheet" href="https://editor-leapmotion.netdna-ssl.com/css/htmleditor.css">
+<link rel="icon" href="https://editor-leapmotion.netdna-ssl.com/img/sushi.png">
+
+        </head><body><div id="preview"><iframe allowfullscreen="" style="width: 100%; height: 100%; border: 0px;"></iframe></div>
+<div id="editor" style="display: none;"><div class="CodeMirror cm-s-default"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 0px;"><textarea autocorrect="off" autocapitalize="off" tabindex="0" style="position: absolute; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-hscrollbar" style="left: 32px; min-height: 18px;"><div style="height: 1px;"></div></div><div class="CodeMirror-vscrollbar" style="display: block; bottom: 0px; min-width: 18px;"><div style="width: 1px; height: 1820px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-scroll" tabindex="-1"><div style="position: relative; min-height: 100%;"><div class="CodeMirror-sizer" style="min-width: 33px; margin-left: 32px; min-height: 1820px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span class="cm-comment">&lt;</span><span class="cm-comment">!</span><span class="cm-comment">-</span><span class="cm-comment">-</span></pre></div><div style="position: relative; z-index: 1; display: none;"></div><div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">1</div></div><pre><span class="cm-comment">&lt;!--</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">2</div></div><pre><span class="cm-comment">The MIT License (MIT)</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">3</div></div><pre><span class="cm-comment">Copyright (c) 2014 Leap Motion Inc</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">4</div></div><pre><span class="cm-comment">Permission is hereby granted, free of charge, to any person obtaining a copy</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">5</div></div><pre><span class="cm-comment">of this software and associated documentation files (the "Software"), to deal</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">6</div></div><pre><span class="cm-comment">in the Software without restriction, including without limitation the rights</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">7</div></div><pre><span class="cm-comment">to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">8</div></div><pre><span class="cm-comment">copies of the Software, and to permit persons to whom the Software is</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">9</div></div><pre><span class="cm-comment">furnished to do so, subject to the following conditions:</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">10</div></div><pre>&nbsp;</pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">11</div></div><pre><span class="cm-comment">The above copyright notice and this permission notice shall be included in</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">12</div></div><pre><span class="cm-comment">all copies or substantial portions of the Software.</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">13</div></div><pre>&nbsp;</pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">14</div></div><pre><span class="cm-comment">THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">15</div></div><pre><span class="cm-comment">IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">16</div></div><pre><span class="cm-comment">FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">17</div></div><pre><span class="cm-comment">AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">18</div></div><pre><span class="cm-comment">LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">19</div></div><pre><span class="cm-comment">OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">20</div></div><pre><span class="cm-comment">THE SOFTWARE.</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">21</div></div><pre><span class="cm-comment">//--&gt;</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">22</div></div><pre>&nbsp;</pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">23</div></div><pre><span class="cm-tag">&lt;html&gt;</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">24</div></div><pre>  <span class="cm-tag">&lt;head&gt;</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">25</div></div><pre>    <span class="cm-tag">&lt;title&gt;</span>Grab Strength Demo<span class="cm-tag">&lt;/title&gt;</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">26</div></div><pre>    <span class="cm-tag">&lt;script</span> <span class="cm-attribute">src</span>=<a href="https://cdnjs.cloudflare.com/ajax/libs/three.js/r67/three.js" target="_blank" class="cm-url-string">"//cdnjs.cloudflare.com/ajax/libs/three.js/r67/three.js"</a><span class="cm-tag">&gt;&lt;/script&gt;</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">27</div></div><pre>    <span class="cm-tag">&lt;script</span> <span class="cm-attribute">src</span>=<a href="https://js.leapmotion.com/leap-0.6.2.min.js" target="_blank" class="cm-url-string">"//js.leapmotion.com/leap-0.6.2.min.js"</a><span class="cm-tag">&gt;&lt;/script&gt;</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">28</div></div><pre>    <span class="cm-tag">&lt;script</span> <span class="cm-attribute">src</span>=<a href="https://js.leapmotion.com/leap-plugins-0.1.6.1.js" target="_blank" class="cm-url-string">"//js.leapmotion.com/leap-plugins-0.1.6.1.js"</a><span class="cm-tag">&gt;&lt;/script&gt;</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">29</div></div><pre>    <span class="cm-tag">&lt;script</span> <span class="cm-attribute">src</span>=<a href="https://js.leapmotion.com/leap.rigged-hand-0.1.4.min.js" target="_blank" class="cm-url-string">"//js.leapmotion.com/leap.rigged-hand-0.1.4.min.js"</a><span class="cm-tag">&gt;&lt;/script&gt;</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">30</div></div><pre>&nbsp;</pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">31</div></div><pre>&nbsp;</pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">32</div></div><pre>    <span class="cm-tag">&lt;style</span> <span class="cm-attribute">class</span>=<span class="cm-string">"codepen"</span><span class="cm-tag">&gt;</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">33</div></div><pre><span class="cm-tab">    </span><span class="cm-tab">    </span><span class="cm-tag">body</span>{</pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">34</div></div><pre><span class="cm-tab">    </span><span class="cm-tab">    </span>  <span class="cm-property">font-family</span><span class="cm-operator">:</span> <span class="cm-string">'Helvetica Neue'</span>, <span class="cm-variable-2">Helvetica</span>, <span class="cm-variable-2">Arial</span>, <span class="cm-string">'Lucida Grande'</span>, <span class="cm-string-2">sans-serif</span>;</pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">35</div></div><pre><span class="cm-tab">    </span><span class="cm-tab">    </span>}</pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">36</div></div><pre><span class="cm-tab">    </span><span class="cm-tab">    </span><span class="cm-builtin">#output</span>{</pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">37</div></div><pre><span class="cm-tab">    </span><span class="cm-tab">    </span>  <span class="cm-property">font-size</span><span class="cm-operator">:</span> <span class="cm-number">66px</span>;</pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">38</div></div><pre><span class="cm-tab">    </span><span class="cm-tab">    </span>  <span class="cm-property">color</span><span class="cm-operator">:</span> <span class="cm-atom">#005d98</span>;</pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">39</div></div><pre><span class="cm-tab">    </span><span class="cm-tab">    </span>  <span class="cm-property">text-align</span><span class="cm-operator">:</span> <span class="cm-string-2">left</span>;</pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">40</div></div><pre><span class="cm-tab">    </span><span class="cm-tab">    </span>  <span class="cm-property">position</span><span class="cm-operator">:</span> <span class="cm-string-2">fixed</span>;</pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">41</div></div><pre><span class="cm-tab">    </span><span class="cm-tab">    </span>  <span class="cm-property">bottom</span><span class="cm-operator">:</span> <span class="cm-number">18px</span>;</pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">42</div></div><pre><span class="cm-tab">    </span><span class="cm-tab">    </span>}</pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">43</div></div><pre><span class="cm-tab">    </span><span class="cm-tab">    </span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">44</div></div><pre><span class="cm-tab">    </span><span class="cm-tab">    </span><span class="cm-builtin">#progress</span> {</pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">45</div></div><pre><span class="cm-tab">    </span><span class="cm-tab">    </span>  <span class="cm-property">background</span><span class="cm-operator">:</span> <span class="cm-atom">#005d98</span>;</pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">46</div></div><pre><span class="cm-tab">    </span><span class="cm-tab">    </span>  <span class="cm-property">position</span><span class="cm-operator">:</span> <span class="cm-string-2">fixed</span>;</pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">47</div></div><pre><span class="cm-tab">    </span><span class="cm-tab">    </span>  <span class="cm-property">bottom</span><span class="cm-operator">:</span> <span class="cm-number">0</span>;</pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">48</div></div><pre><span class="cm-tab">    </span><span class="cm-tab">    </span>  <span class="cm-property">left</span><span class="cm-operator">:</span> <span class="cm-number">0</span>;</pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">49</div></div><pre><span class="cm-tab">    </span><span class="cm-tab">    </span>  <span class="cm-property">height</span><span class="cm-operator">:</span> <span class="cm-number">16px</span>;</pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">50</div></div><pre><span class="cm-tab">    </span><span class="cm-tab">    </span>  <span class="cm-property">width</span><span class="cm-operator">:</span> <span class="cm-number">0%</span>;</pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">51</div></div><pre><span class="cm-tab">    </span><span class="cm-tab">    </span>}</pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">52</div></div><pre><span class="cm-tab">    </span><span class="cm-tab">    </span><span class="cm-tag">img</span><span class="cm-builtin">#connect-leap</span>{</pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">53</div></div><pre><span class="cm-tab">    </span><span class="cm-tab">    </span>  <span class="cm-comment">/* this can be removed with leapjs-plugins 0.1.4.1 */</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">54</div></div><pre><span class="cm-tab">    </span><span class="cm-tab">    </span>  <span class="cm-property">max-width</span><span class="cm-operator">:</span> <span class="cm-number">100%</span>;</pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">55</div></div><pre><span class="cm-tab">    </span><span class="cm-tab">    </span>}</pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">56</div></div><pre>    <span class="cm-tag">&lt;/style&gt;</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">57</div></div><pre>&nbsp;</pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">58</div></div><pre>  <span class="cm-tag">&lt;/head&gt;</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">59</div></div><pre>&nbsp;</pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">60</div></div><pre>  <span class="cm-tag">&lt;body&gt;</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">61</div></div><pre>    <span class="cm-tag">&lt;div</span> <span class="cm-attribute">id</span>=<span class="cm-string">output</span><span class="cm-tag">&gt;&lt;/div&gt;</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">62</div></div><pre>    <span class="cm-tag">&lt;div</span> <span class="cm-attribute">id</span>=<span class="cm-string">progress</span><span class="cm-tag">&gt;&lt;/div&gt;</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">63</div></div><pre>  <span class="cm-tag">&lt;/body&gt;</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">64</div></div><pre>&nbsp;</pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">65</div></div><pre>  <span class="cm-tag">&lt;script</span> <span class="cm-attribute">type</span>=<span class="cm-string">"text/javascript"</span><span class="cm-tag">&gt;</span></pre></div><div style="position: relative;"><div style="position: absolute; left: 0px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 23px;">66</div></div><pre><span class="cm-tab">    </span><span class="cm-comment">/********************************************************</span></pre></div></div><div class="CodeMirror-cursor" style="left: 0px; top: 0px; height: 0px;">&nbsp;</div><div class="CodeMirror-cursor CodeMirror-secondarycursor" style="display: none;">&nbsp;</div></div></div></div></div><div style="position: absolute; height: 30px; top: 1820px;">&nbsp;</div><div class="CodeMirror-gutters" style="left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 31px;"></div></div></div></div></div></div>
+<div id="toolbar"><button class="button code-button">Show Code</button><button class="button"> ▼ </button><img class="button codepen-button" src="./LiveGit_files/codepen_logo.png" style="display: none;"></div>
+<script>
+  if (window.location.pathname !== '/') {
+    $(function() {
+      var $livegit = window.location.pathname.replace(/\.livegit$/, '');
+      $.get($livegit, function(code) {
+        var showCodeLabel = 'Show Code';
+        var hideCodeLabel = 'Hide Code';
+
+        var documents = [ { filename: 'Untitled', filetype: 'text/plain', autoupdate: true, code: code } ];
+        // preview
+        var preview = document.getElementById( 'preview' );
+        // editor
+        var interval;
+        var editor = CodeMirror( document.getElementById( 'editor' ), {
+          value: code,
+          mode: 'text/html',
+          lineNumbers: true,
+          matchBrackets: true,
+          indentWithTabs: true,
+          tabSize: 4,
+          indentUnit: 4
+        } );
+        editor.on( 'change', function() {
+          if ( documents[ 0 ].autoupdate === false ) return;
+          clearTimeout( interval );
+          interval = setTimeout( update, 500 );
+        } );
+        var $editor = $('#editor');
+        $editor.hide();
+        // $toolbar
+        var $toolbar = $('#toolbar');
+
+        var $codepenButton = $('<img class="button codepen-button" src="http://2.bp.blogspot.com/-QdCl1Kw74mQ/T_YEsKcZ8qI/AAAAAAAACwE/tp4eRtHvO80/s400/codepen_logo.png" />').hide();
+        $codepenButton.click(function ( event ) {
+          var $input = $('<input>');
+          $input.attr('name', 'data');
+          $input.attr('value', JSON.stringify({html: editor.getValue().replace(/<head>([ \t\n]*)/m,'<head>$1<!-- See more examples at developer.leapmotion.com -->$1<base href="'+window.location.href+'" />$1')}));
+          $('<form style="display:none;" action="http://codepen.io/pen/define?editor=100" method="POST" target="_blank"/>')
+            .append($input)
+            .appendTo('body')
+            .submit();
+          $codepenButton.hide();
+        });
+
+        var $hideButton = $('<button class="button code-button">'+showCodeLabel+'</button>');
+        $hideButton.click(function() {
+          if ($hideButton.html() === hideCodeLabel) {
+            $hideButton.html(showCodeLabel);
+            $editor.hide();
+          } else {
+            $hideButton.html(hideCodeLabel);
+            $editor.show();
+          }
+        });
+        var $menuButton = $('<button class="button"> &#x25BC; </button>');
+        $menuButton.click(function() {
+          $codepenButton.toggle();
+        });
+        $toolbar.append($hideButton);
+        $toolbar.append($menuButton);
+        $toolbar.append($codepenButton);
+
+        var update = function () {
+
+          var value = editor.getValue();
+
+          if ( validate( value ) ) {
+
+            // remove previous iframe
+
+            if ( preview.children.length > 0 ) {
+
+              preview.removeChild( preview.firstChild );
+
+            }
+
+            //
+
+            var iframe = document.createElement( 'iframe' );
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.border = '0';
+            iframe.setAttribute('allowFullScreen', '');
+            preview.appendChild( iframe );
+
+            var content = iframe.contentDocument || iframe.contentWindow.document;
+
+            // workaround for chrome bug
+            // http://code.google.com/p/chromium/issues/detail?id=35980#c12
+
+            value = value.replace( '<script>', '<script>if ( window.innerWidth === 0 ) { window.innerWidth = parent.innerWidth; window.innerHeight = parent.innerHeight; }' );
+
+            content.open();
+            content.write( value );
+            content.close();
+
+          }
+
+          editor.refresh();
+        };
+
+        var errorLines = [];
+        var widgets = [];
+
+        var validate = function ( value ) {
+
+          return editor.operation( function () {
+
+            while ( errorLines.length > 0 ) {
+
+              editor.removeLineClass( errorLines.shift(), 'background', 'errorLine' );
+
+            }
+
+            for ( var i = 0; i < widgets.length; i ++ ) {
+
+              editor.removeLineWidget( widgets[ i ] );
+
+            }
+
+            widgets.length = 0;
+
+            // remove html
+
+            var string = '\n';
+            var lines = value.split( '\n' );
+            var lineCurrent = 0, lineTotal = lines.length;
+
+            while ( lineCurrent < lineTotal && lines[ lineCurrent ].indexOf( '<script>' ) === -1 ) {
+
+              string += '\n';
+              lineCurrent ++;
+
+            }
+
+            var lineStart = lineCurrent ++;
+
+            while ( lineCurrent < lineTotal && lines[ lineCurrent ].indexOf( '<\/script>' ) === -1 ) {
+
+              string += lines[ lineCurrent ] + '\n';
+              lineCurrent ++;
+
+            }
+
+            //
+
+            try {
+
+              var result = esprima.parse( string, { tolerant: true } ).errors;
+
+              for ( var i = 0; i < result.length; i ++ ) {
+
+                var error = result[ i ];
+
+                var message = document.createElement( 'div' );
+                message.className = 'esprima-error';
+                message.textContent = error.message.replace(/Line [0-9]+: /, '');
+
+                var lineNumber = error.lineNumber - 1;
+                errorLines.push( lineNumber );
+
+                editor.addLineClass( lineNumber, 'background', 'errorLine' );
+
+                var widget = editor.addLineWidget(
+                  lineNumber,
+                  message
+                );
+
+                widgets.push( widget );
+
+              }
+
+            } catch ( error ) {
+
+              var message = document.createElement( 'div' );
+              message.className = 'esprima-error';
+              message.textContent = error.message.replace(/Line [0-9]+: /, '');
+
+              var lineNumber = error.lineNumber - 1;
+              errorLines.push( lineNumber );
+
+              editor.addLineClass( lineNumber, 'background', 'errorLine' );
+
+              var widget = editor.addLineWidget(
+                lineNumber,
+                message
+              );
+
+              widgets.push( widget );
+
+            }
+
+            return errorLines.length === 0;
+
+          });
+
+        };
+
+        update();
+      });
+    });
+  }
+</script>
+
+
+</body></html>

@@ -1,0 +1,93 @@
+
+<html>
+  <head>
+    <script src="leap-0.6.2.min.js"></script>
+    <script src="timbre.js"></script>
+
+  </head>
+
+  <body>
+    <h1>Right:</h1><h1 id="right"></h1>
+  </br>
+    <!-- <h1>Left:</h1><h1 id="left"></h1> -->
+  </body>
+
+  <script type="text/javascript">
+  window.scale = {};
+  window.scale["C4"] = 261.63;
+  window.scale["D4"] = 293.66;
+  window.scale["E4"] = 329.63;
+  window.scale["F4"] = 349.23;
+  window.scale["G4"] = 392.00;
+  window.scale["A3"] = 220.00;
+  window.scale["B3"] = 246.94;
+  // window.scale["C4"] = 261.63;
+
+  window.converter = {};
+  window.converter[1] = "C4";
+  window.converter[2] = "D4";
+  window.converter[3] = "E4";
+  window.converter[4] = "F4";
+  window.converter[5] = "G4";
+  // window.converter[] = "A3";
+  // window.converter[] = "B3";
+  // window.converter[] = "C4";
+
+  window.rnumf = document.getElementById("right");
+  window.currnumf = 0;
+  window.oldrnumf = 0;
+  // window.lnumf = document.getElementById("left");
+
+window.asdf = null;
+
+window.sin = T("sin", {freq:440, mul:0.5});
+
+
+    function testFingers() {
+        if (window.Hand) {
+            window.oldrnumf = window.currnumf;
+            var  i = 0;
+            var fingers = window.Hand.fingers;
+            var numfingers = 0;
+
+
+            for (i = 0; i < 5; i++) {
+                if (fingers[i].extended) {
+                    numfingers++;
+                }
+            }
+            window.currnumf = numfingers;
+            console.log(numfingers);
+            window.rnumf.innerHTML = numfingers;
+
+            if (numfingers > 0 && window.currnumf != window.oldrnumf) {
+              window.sin.pause();
+
+              window.sin = T("sin", {freq: window.scale[window.converter[numfingers]] , mul:0.5});
+
+
+              window.sin.play();
+            }
+
+        }
+
+    }
+
+
+    // Set up the controller:
+    Leap.loop({background: true}, {
+
+        hand: function(hand){
+
+
+            window.Hand = hand;
+            if (asdf == null) {
+                asdf = setInterval(testFingers, 750);
+            }
+          }
+      });
+
+
+
+  </script>
+</html>
