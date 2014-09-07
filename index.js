@@ -3,21 +3,21 @@ window.volume = 0;
 
 
 window.note = {};
-window.note["C3"] = T("sin", {freq:130.81, mul:.6});
-window.note["D3"] = T("sin", {freq:146.83, mul:.6});
-window.note["E3"] = T("sin", {freq:164.81, mul:.6});
-window.note["F3"] = T("sin", {freq:174.61, mul:.6});
-window.note["G3"] = T("sin", {freq:196.00, mul:.6});
-window.note["A3"] = T("sin", {freq:220.00, mul:.6});
-window.note["B3"] = T("sin", {freq:246.94, mul:.6});
-window.note["C4"] = T("sin", {freq:261.63, mul:.55});
-window.note["D4"] = T("sin", {freq:293.66, mul:.55});
-window.note["E4"] = T("sin", {freq:329.63, mul:.3});
-window.note["F4"] = T("sin", {freq:349.23, mul:.3});
-window.note["G4"] = T("sin", {freq:392.00, mul:.3});
-window.note["A4"] = T("sin", {freq:440.00, mul:.3});
-window.note["B4"] = T("sin", {freq:493.88, mul:.25});
-window.note["C5"] = T("sin", {freq:523.25, mul:.25});
+window.note["C3"] = T("sin", {freq:130.81, mul:.6, wave:"wavc(123468AB)"});
+window.note["D3"] = T("sin", {freq:146.83, mul:.6, wave:"wavc(123468AB)"});
+window.note["E3"] = T("sin", {freq:164.81, mul:.6, wave:"wavc(123468AB)"});
+window.note["F3"] = T("sin", {freq:174.61, mul:.6, wave:"wavc(123468AB)"});
+window.note["G3"] = T("sin", {freq:196.00, mul:.6, wave:"wavc(123468AB)"});
+window.note["A3"] = T("sin", {freq:220.00, mul:.6, wave:"wavc(123468AB)"});
+window.note["B3"] = T("sin", {freq:246.94, mul:.6, wave:"wavc(123468AB)"});
+window.note["C4"] = T("sin", {freq:261.63, mul:.55, wave:"wavc(123468AB)"});
+window.note["D4"] = T("sin", {freq:293.66, mul:.55, wave:"wavc(123468AB)"});
+window.note["E4"] = T("sin", {freq:329.63, mul:.3, wave:"wavc(123468AB)"});
+window.note["F4"] = T("sin", {freq:349.23, mul:.3, wave:"wavc(123468AB)"});
+window.note["G4"] = T("sin", {freq:392.00, mul:.3, wave:"wavc(123468AB)"});
+window.note["A4"] = T("sin", {freq:440.00, mul:.3, wave:"wavc(123468AB)"});
+window.note["B4"] = T("sin", {freq:493.88, mul:.25, wave:"wavc(123468AB)"});
+window.note["C5"] = T("sin", {freq:523.25, mul:.25, wave:"wavc(123468AB)"});
 
 window.chords = {};
 window.chords[1] = T("+", note["C3"], note["E4"], note["G4"]).set({mul: 1});
@@ -111,6 +111,13 @@ function testFingers() {
     } else {
         numfingers = 0;
         window.volume = 0;
+    }
+
+    if (window.rHand) {
+        if (numFingers(window.rHand.fingers) == 0) {
+            numfingers = 0;
+            window.volume = 0;
+        }
     }
     window.currnumf = numfingers;
     if (window.currnumf == 0) {
