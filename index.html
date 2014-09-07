@@ -4,203 +4,33 @@
     <script src="leap.min.js"></script>
     <script src="timbre.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r67/three.js"></script>
+    <script src="https://js.leapmotion.com/leap-plugins-0.1.6.1.js"></script>
+    <script src="https://js.leapmotion.com/leap.rigged-hand-0.1.4.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="index.css"/>
+
   </head>
 
   <body>
-    <h1>Tonic: C</h1>
-    <h1>Chord:</h1><h1 id="right"></h1>
+    <div id="holder">
+       <div id="stopstart">adf </div>
+      <h1>Tonic: C</h1>
+      <h2>Chord:</h2><h2 id="right"></h2>
+      <br/><br/>
+      <h2>Volume:</h2><h2 id="vol"></h2>
+      <h2 id="righthand">TWO HAND!</h2>
+    </div>
+
+
+
+      <div id="output"></div>
+      <div id="progress"></div>
+
+
   </br>
     <!-- <h1>Left:</h1><h1 id="left"></h1> -->
   </body>
+    <script src="index.js" type="text/javascript"></script>
 
-  <script type="text/javascript">
-
-  window.handy = 0;
-  window.volume = 0;
-
-  window.note = {};
-  window.note["C3"] = T("sin", {freq:130.81, mul:.6});
-  window.note["D3"] = T("sin", {freq:146.83, mul:.6});
-  window.note["E3"] = T("sin", {freq:164.81, mul:.6});
-  window.note["F3"] = T("sin", {freq:174.61, mul:.6});
-  window.note["G3"] = T("sin", {freq:196.00, mul:.6});
-  window.note["A3"] = T("sin", {freq:220.00, mul:.6});
-  window.note["B3"] = T("sin", {freq:246.94, mul:.6});
-  window.note["C4"] = T("sin", {freq:261.63, mul:.55});
-  window.note["D4"] = T("sin", {freq:293.66, mul:.55});
-  window.note["E4"] = T("sin", {freq:329.63, mul:.3});
-  window.note["F4"] = T("sin", {freq:349.23, mul:.3});
-  window.note["G4"] = T("sin", {freq:392.00, mul:.3});
-  window.note["A4"] = T("sin", {freq:440.00, mul:.3});
-  window.note["B4"] = T("sin", {freq:493.88, mul:.25});
-  window.note["C5"] = T("sin", {freq:523.25, mul:.25});
-
-  window.chords = {};
-  window.chords[1] = T("+", note["C3"], note["E4"], note["G4"]).set({mul: 1});
-  window.chords[2] = T("+", note["D3"], note["F4"], note["A4"]).set({mul: 1});
-  window.chords[3] = T("+", note["E3"], note["G4"], note["B4"]).set({mul: 1});
-  window.chords[4] = T("+", note["F3"], note["A4"], note["C5"]).set({mul: 1});
-  window.chords[5] = T("+", note["G3"], note["B4"], note["D4"]).set({mul: 1});
-  window.chords[6] = T("+", note["A3"], note["C4"], note["E4"]).set({mul: 1});
-  window.chords[7] = T("+", note["B3"], note["D4"], note["F4"]).set({mul: 1});
-  window.chords[8] = T("+", note["C4"], note["E4"], note["G4"]).set({mul: 1});
-
-  window.rnumf = document.getElementById("right");
-  window.currnumf = 0;
-  window.oldrnumf = 0;
-  // window.lnumf = document.getElementById("left");
-
-window.asdf = null;
-
-window.chord = window.chords[1];
-
-  function numFingers(fingers) {
-    var thumb = fingers[0].extended;
-    var index = fingers[1].extended;
-    var middle = fingers[2].extended;
-    var ring = fingers[3].extended;
-    var pinky = fingers[4].extended;
-
-    // var which = t + 2 * i + 4 * m + 8 * r + 16 * p;
-
-    // switch (which) {
-    //   case 31:
-    //     return 5;
-    //     break;
-    //   case 30:
-    //     return 4;
-    //     break;
-    //   case 14:
-    //     return 3;
-    //     break;
-    //   case 7:
-    //     return 8;
-    //     break;
-    //   case 6:
-    //     return 2;
-    //     break;
-    //   case 3:
-    //     return 7;
-    //     break;
-    //   case 2:
-    //     return 1;
-    //     break;
-    //   case 1:
-    //     return 6;
-    //     break;
-    //   default:
-    //     return 0;
-    //     break;
-    // }
-
-    if (thumb) {
-
-      if (index && middle && ring && pinky) {
-        return 5;
-      } else if (index && middle) {
-        return 8;
-      } else if (index) {
-        return 7;
-      } else {
-        return 6;
-      }
-    } else if (index) {
-        if (middle && ring && pinky) {
-          return 4;
-        } else if (index && ring) {
-          return 3;
-        } else if (middle) {
-          return 2;
-        } else {
-          return 1;
-        }
-    } else {
-      return 0;
-    }
-  }
-
-
-    function testFingers() {
-        if (window.Hand) {
-
-          window.handy = window.Hand.palmPosition[1];
-          window.volume = (800 - window.handy) / 400 - .5;
-
-          console.log(window.volume);
-
-            window.oldrnumf = window.currnumf;
-            var  i = 0;
-            var fingers = window.Hand.fingers;
-            var numfingers = numFingers(fingers);
-        } else {
-          numfingers = 0;
-        }
-        window.currnumf = numfingers;
-            console.log(numfingers);
-
-            switch (numfingers) {
-              case 0:
-                window.rnumf.innerHTML = "I";
-                break;
-              case 1:
-                window.rnumf.innerHTML = "ii";
-                break;
-              case 2:
-                window.rnumf.innerHTML = "iii";
-                break;
-              case 3:
-                window.rnumf.innerHTML = "IV";
-                break;
-              case 4:
-                window.rnumf.innerHTML = "V";
-                break;
-              case 5:
-                window.rnumf.innerHTML = "vi";
-                break;
-              case 6:
-                window.rnumf.innerHTML = "vii";
-                break;
-              case 7:
-                window.rnumf.innerHTML = "vii";
-                break;
-              case 0:
-                window.rnumf.innerHTML = "?";
-                break;
-
-            }
-            window.rnumf.innerHTML = numfingers;
-
-
-        if (numfingers > 0) {
-            if (window.currnumf != window.oldrnumf) {
-              window.chord.pause();
-            }
-
-              window.chord = window.chords[numfingers].set({mul: window.volume});
-
-            if (window.currnumf != window.oldrnumf)
-              window.chord.play();
-            } else  if (numfingers == 0) {
-              window.chord.pause();
-            }
-
-    }
-
-
-    // Set up the controller:
-    Leap.loop({background: true}, {
-
-        hand: function(hand){
-
-
-            window.Hand = hand;
-            if (asdf == null) {
-                asdf = setInterval(testFingers, 50);
-            }
-          }
-      });
-
-
-
-  </script>
 </html>

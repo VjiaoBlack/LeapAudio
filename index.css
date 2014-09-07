@@ -1,0 +1,52 @@
+body{
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+}
+#output{
+  font-size: 66px;
+  color: #005d98;
+  text-align: left;
+  position: fixed;
+  bottom: 18px;
+}
+
+#progress {
+  background: #005d98;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 16px;
+  width: 0%;
+}
+img#connect-leap{
+  /* this can be removed with leapjs-plugins 0.1.4.1 */
+  max-width: 100%;
+}
+
+#holder {
+    width: 200px;
+    height: 100px;
+
+}
+
+h2 {
+    float: left;
+}
+
+
+#right, #vol {
+    float: right;
+}
+
+#stopstart {
+    position: fixed;
+    right: 5px;
+    width: 40px;
+    height: 40px;
+    background-color: blue;
+    float: right;
+
+}
+
+canvas {
+    z-index: -1;
+}
