@@ -1,13 +1,14 @@
 
 <html>
   <head>
-    <script src="leap-0.6.2.min.js"></script>
+    <script src="leap.min.js"></script>
     <script src="timbre.js"></script>
 
   </head>
 
   <body>
-    <h1>Right:</h1><h1 id="right"></h1>
+    <h1>Tonic: C</h1>
+    <h1>Chord:</h1><h1 id="right"></h1>
   </br>
     <!-- <h1>Left:</h1><h1 id="left"></h1> -->
   </body>
@@ -54,26 +55,65 @@ window.asdf = null;
 window.chord = window.chords[1];
 
   function numFingers(fingers) {
-    if (fingers[0].extended) {
-      if (fingers[4].extended) {
+    var thumb = fingers[0].extended;
+    var index = fingers[1].extended;
+    var middle = fingers[2].extended;
+    var ring = fingers[3].extended;
+    var pinky = fingers[4].extended;
+
+    // var which = t + 2 * i + 4 * m + 8 * r + 16 * p;
+
+    // switch (which) {
+    //   case 31:
+    //     return 5;
+    //     break;
+    //   case 30:
+    //     return 4;
+    //     break;
+    //   case 14:
+    //     return 3;
+    //     break;
+    //   case 7:
+    //     return 8;
+    //     break;
+    //   case 6:
+    //     return 2;
+    //     break;
+    //   case 3:
+    //     return 7;
+    //     break;
+    //   case 2:
+    //     return 1;
+    //     break;
+    //   case 1:
+    //     return 6;
+    //     break;
+    //   default:
+    //     return 0;
+    //     break;
+    // }
+
+    if (thumb) {
+
+      if (index && middle && ring && pinky) {
         return 5;
-      } else if (fingers[2].extended) {
+      } else if (index && middle) {
         return 8;
-      } else if (fingers[1].extended) {
+      } else if (index) {
         return 7;
       } else {
         return 6;
       }
-    } else if (fingers[1].extended) {
-      if (fingers[4].extended) {
-        return 4;
-      } else if (fingers[3].extended) {
-        return 3;
-      } else if (fingers[2].extended) {
-        return 2;
-      } else {
-        return 1;
-      }
+    } else if (index) {
+        if (middle && ring && pinky) {
+          return 4;
+        } else if (index && ring) {
+          return 3;
+        } else if (middle) {
+          return 2;
+        } else {
+          return 1;
+        }
     } else {
       return 0;
     }
@@ -97,7 +137,40 @@ window.chord = window.chords[1];
         }
         window.currnumf = numfingers;
             console.log(numfingers);
+
+            switch (numfingers) {
+              case 0:
+                window.rnumf.innerHTML = "I";
+                break;
+              case 1:
+                window.rnumf.innerHTML = "ii";
+                break;
+              case 2:
+                window.rnumf.innerHTML = "iii";
+                break;
+              case 3:
+                window.rnumf.innerHTML = "IV";
+                break;
+              case 4:
+                window.rnumf.innerHTML = "V";
+                break;
+              case 5:
+                window.rnumf.innerHTML = "vi";
+                break;
+              case 6:
+                window.rnumf.innerHTML = "vii";
+                break;
+              case 7:
+                window.rnumf.innerHTML = "vii";
+                break;
+              case 0:
+                window.rnumf.innerHTML = "?";
+                break;
+
+            }
             window.rnumf.innerHTML = numfingers;
+
+
         if (numfingers > 0) {
             if (window.currnumf != window.oldrnumf) {
               window.chord.pause();
